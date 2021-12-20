@@ -59,14 +59,17 @@ function playRound(playerSelection, computerSelection)
     {
         if( computerSelection === "Rock")
         {
+            console.log("Tie");
             return "Tie";
         }
         if (computerSelection === "Paper")
         {
+            console.log("You lose! Paper beats Rock");
             return "You lose! Paper beats Rock";
         }
         if (computerSelection === "Scissors")
         {
+            console.log("You win! Rock beats Scissors");
             return "You win! Rock beats Scissors";
         }
     }
@@ -75,14 +78,17 @@ function playRound(playerSelection, computerSelection)
     {
         if( computerSelection === "Paper")
         {
+            console.log("Tie");
             return "Tie";
         }
         if (computerSelection === "Rock")
         {
+            console.log("You win! Paper beats Rock");
             return "You win! Paper beats Rock";
         }
         if (computerSelection === "Scissors")
         {
+            console.log("You lose! Scissors beat Paper");
             return "You lose! Scissors beat Paper";
         }
     }
@@ -91,20 +97,51 @@ function playRound(playerSelection, computerSelection)
     {
         if( computerSelection === "Scissors")
         {
+            console.log("Tie");
             return "Tie";
         }
+        console.log("You win! Scissors beat Paper");
         if (computerSelection === "Paper")
         {
             return "You win! Scissors beat Paper";
         }
         if (computerSelection === "Rock")
         {
+            console.log("You lose! Rock beats Scissors");
             return "You lose! Rock beats Scissors";
         }
     }
 
 }
 
-
-
-console.log(playRound (getPlayerSelection(), computerPlay()));
+function game()
+{
+    //5 round game that keeps score and reports winner and loser at the end
+    //initialize score variables for both computer and player
+    let computerScore = 0;
+    let playerScore = 0;
+    //5 rounds
+    for (let i = 0; i < 5; i++)
+    {
+        //play 1 round
+        let roundScore = playRound(getPlayerSelection(), computerPlay());
+        if (roundScore.slice(0,4) === "Tie")
+        {
+            computerScore += 1;
+            playerScore += 1;
+        }
+        if(roundScore.slice(4,7) ==="win")
+        {
+            playerScore += 1;
+        }
+        if(roundScore.slice(4,8) ==="lose")
+        {
+            computerScore +=1;
+        }
+        //show current score
+        console.log(`computer score: ${computerScore}`);
+        console.log(`player score: ${playerScore}`);
+    }
+    
+}
+game();
