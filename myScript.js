@@ -54,7 +54,8 @@ function playRound(playerSelection, computerSelection)
     //play a random round of rock paper scissors and return the winner
 
     //player chooses Rock
-    if (playerSelection === "Rock")
+    let playerSelectionCapitalized = capitalize(playerSelection);
+    if (playerSelectionCapitalized === "Rock")
     {
         if( computerSelection === "Rock")
         {
@@ -70,7 +71,7 @@ function playRound(playerSelection, computerSelection)
         }
     }
     //player chooses Paper
-    if (playerSelection === "Paper")
+    if (playerSelectionCapitalized === "Paper")
     {
         if( computerSelection === "Paper")
         {
@@ -86,7 +87,7 @@ function playRound(playerSelection, computerSelection)
         }
     }
     //player chooses Scissors
-    if (playerSelection === "Scissors")
+    if (playerSelectionCapitalized === "Scissors")
     {
         if( computerSelection === "Scissors")
         {
@@ -103,5 +104,7 @@ function playRound(playerSelection, computerSelection)
     }
 
 }
+
+
 
 console.log(playRound (getPlayerSelection(), computerPlay()));
