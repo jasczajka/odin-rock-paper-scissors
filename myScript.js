@@ -142,6 +142,18 @@ function game()
         console.log(`computer score: ${computerScore}`);
         console.log(`player score: ${playerScore}`);
     }
-    
+    //show the winner and the loser
+    if (computerScore > playerScore)
+    {
+        console.log("Winner: Computer\nLoser: Player");
+    }
+    else if(playerScore > computerScore)
+    {
+        console.log("Winner: player\nLoser: Computer");
+    }
+    else
+    {
+        console.log("Tie!");
+    }
 }
 game();
