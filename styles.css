@@ -1,0 +1,14 @@
+
+.container
+{
+  padding: 100px;
+  display:flex;
+  justify-content: center;
+}
+
+button
+{
+  padding: 20px;
+  margin: 20px;
+  font-size: large;
+}

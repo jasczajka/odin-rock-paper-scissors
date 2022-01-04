@@ -25,6 +25,7 @@ function computerPlay()
 //a capitalize function that will remove unnecessary conditions
 function capitalize(s)
 {
+    //returns first falsy, so if s is empty, returns null
     return s && s[0].toUpperCase() + s.slice(1);
 }
 
@@ -114,46 +115,4 @@ function playRound(playerSelection, computerSelection)
 
 }
 
-function game()
-{
-    //5 round game that keeps score and reports winner and loser at the end
-    //initialize score variables for both computer and player
-    let computerScore = 0;
-    let playerScore = 0;
-    //5 rounds
-    for (let i = 0; i < 5; i++)
-    {
-        //play 1 round
-        let roundScore = playRound(getPlayerSelection(), computerPlay());
-        if (roundScore.slice(0,4) === "Tie")
-        {
-            computerScore += 1;
-            playerScore += 1;
-        }
-        if(roundScore.slice(4,7) ==="win")
-        {
-            playerScore += 1;
-        }
-        if(roundScore.slice(4,8) ==="lose")
-        {
-            computerScore +=1;
-        }
-        //show current score
-        console.log(`computer score: ${computerScore}`);
-        console.log(`player score: ${playerScore}`);
-    }
-    //show the winner and the loser
-    if (computerScore > playerScore)
-    {
-        console.log("Winner: Computer\nLoser: Player");
-    }
-    else if(playerScore > computerScore)
-    {
-        console.log("Winner: player\nLoser: Computer");
-    }
-    else
-    {
-        console.log("Tie!");
-    }
-}
-game();
+
