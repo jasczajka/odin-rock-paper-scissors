@@ -61,22 +61,32 @@ function playRound(e)
 
     //player chooses Rock
     let playerSelectionCapitalized = capitalize(playerSelection);
+    let playerScore = Number(document.querySelector('#player-score').textContent);
+    let computerScore = Number(document.querySelector('#pc-score').textContent);
+    //reset the counter if any of the scores are 5
+    if (playerScore === 5 || computerScore === 5 )
+    {
+    playerScore = 0;
+    computerScore = 0;
+    }
+    
     if (playerSelectionCapitalized === "Rock")
     {
         if( computerSelection === "Rock")
         {
             console.log("Tie");
-            return "Tie";
+            playerScore ++;
+            computerScore++;
         }
         if (computerSelection === "Paper")
         {
             console.log("You lose! Paper beats Rock");
-            return "You lose! Paper beats Rock";
+            computerScore++;
         }
         if (computerSelection === "Scissors")
         {
             console.log("You win! Rock beats Scissors");
-            return "You win! Rock beats Scissors";
+            playerScore ++;
         }
     }
     //player chooses Paper
@@ -85,17 +95,18 @@ function playRound(e)
         if( computerSelection === "Paper")
         {
             console.log("Tie");
-            return "Tie";
+            playerScore ++;
+            computerScore++;
         }
         if (computerSelection === "Rock")
         {
             console.log("You win! Paper beats Rock");
-            return "You win! Paper beats Rock";
+            playerScore ++;
         }
         if (computerSelection === "Scissors")
         {
             console.log("You lose! Scissors beat Paper");
-            return "You lose! Scissors beat Paper";
+            computerScore++;
         }
     }
     //player chooses Scissors
@@ -104,20 +115,49 @@ function playRound(e)
         if( computerSelection === "Scissors")
         {
             console.log("Tie");
-            return "Tie";
+            playerScore ++;
+            computerScore++;
         }
-        console.log("You win! Scissors beat Paper");
+        
         if (computerSelection === "Paper")
         {
-            return "You win! Scissors beat Paper";
+            console.log("You win! Scissors beat Paper");
+            playerScore ++;
         }
         if (computerSelection === "Rock")
         {
             console.log("You lose! Rock beats Scissors");
-            return "You lose! Rock beats Scissors";
+            computerScore++;
         }
     }
 
+    //update the scores after a round
+    document.querySelector('#player-score').textContent = playerScore;
+    document.querySelector('#pc-score').textContent = computerScore;
+    //check if any of the scores reached 5, we have a winner then
+    //first check for Tie
+    if (playerScore === 5 && computerScore === 5)
+    {
+        let winnerDiv = document.createElement('div');
+        winnerDiv.textContent = 'Tie!'
+        let results = document.querySelector('.results');
+        results.appendChild(winnerDiv);
+    }
+    if (playerScore === 5)
+    {
+        let winnerDiv = document.createElement('div');
+        winnerDiv.textContent = 'You win!'
+        let results = document.querySelector('.results');
+        results.appendChild(winnerDiv);
+    }
+    if (computerScore === 5)
+    {
+        let winnerDiv = document.createElement('div');
+        winnerDiv.textContent = 'You lose!'
+        let results = document.querySelector('.results');
+        results.appendChild(winnerDiv);
+    }
+    
 }
 
 
