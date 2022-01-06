@@ -143,14 +143,14 @@ function playRound(e)
         let results = document.querySelector('.results');
         results.appendChild(winnerDiv);
     }
-    if (playerScore === 5)
+    else if (playerScore === 5)
     {
         let winnerDiv = document.createElement('div');
         winnerDiv.textContent = 'You win!'
         let results = document.querySelector('.results');
         results.appendChild(winnerDiv);
     }
-    if (computerScore === 5)
+    else if (computerScore === 5)
     {
         let winnerDiv = document.createElement('div');
         winnerDiv.textContent = 'You lose!'
