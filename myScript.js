@@ -50,8 +50,13 @@ function getPlayerSelection()
     }
 }
 
-function playRound(playerSelection, computerSelection)
+function playRound(e)
 {
+    //choice is made by clicking a button
+    playerSelection = e.target.textContent;
+
+    //choice is made randomly by computer
+    computerSelection = computerPlay();
     //play a random round of rock paper scissors and return the winner
 
     //player chooses Rock
@@ -116,3 +121,13 @@ function playRound(playerSelection, computerSelection)
 }
 
 
+
+//when DOM loaded, add event listeners to every button to play a Round
+document.addEventListener("DOMContentLoaded", function() {
+    const buttonsCollection = document.getElementsByTagName('button');
+    const buttons = Array.from(buttonsCollection);
+    for (let i = 0; i < buttons.length; i++)
+    {
+        buttons[i].addEventListener('click', playRound);
+    }
+    });
